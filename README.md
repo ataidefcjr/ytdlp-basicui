@@ -1,17 +1,13 @@
-# Para clonar o diretório
+## INSTALLATION
+```
 git clone https://github.com/ataidefcjr/ytdlp
-
-# Navegue até o diretório
-```
 cd ytdlp
-```
-
-# Instale as biliotecas
 pip install -r requirements.txt
 
-# Cria um atalho na área de trabalho
+```
+# Create Desktop Shortchut
+```
 python create.py
+```
 
-# Ou se não quiser criar o atalho, execute o script manualmente
-python main.py
-
+**Note:** If you don't want to create the desktop shortcut or if it doesn't work, you'll need to add manually or run main.py directly

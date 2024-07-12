@@ -11,5 +11,5 @@ $ pip install -r requirements.txt
 $ python create.py
 
 # Ou se não quiser criar o atalho
-# pythonw main.py
+# python main.py
 

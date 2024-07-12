@@ -1,11 +1,11 @@
 # ****INSTALLATION****
 ```
-git clone https://github.com/ataidefcjr/ytdlp
-cd ytdlp
+git clone https://github.com/ataidefcjr/ytdlp-basicui
+cd ytdlp-basicui
 pip install -r requirements.txt
 python create.py
 ```
-#### `create.py is used to create desktop shortchut` 
+### create.py is used to create desktop shortchut
 **`Note:`** If you don't want to create the desktop shortcut or if it doesn't work, you'll need to add manually or run main.py directly
 
 ## USAGE

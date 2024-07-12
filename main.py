@@ -6,7 +6,7 @@ import threading
 class YtDlpInterface:
     def __init__(self, master):
         self.master = master
-        self.master.title("yt-dlp Interface")
+        self.master.title("YTDLP Basic Interface")
 
         # Centralizar a janela principal
         window_width = 550

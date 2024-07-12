@@ -9,7 +9,7 @@ or manualy download and install from official websites.
 * `Linux users:` 
 ```
 sudo apt update
-sudo apt install python git -y
+sudo apt install python3 git -y
 ```
 **`Note:`** If your Linux system uses a different package manager such as `dnf` (Fedora), `pacman` (Arch Linux), or another, adjust the above commands according to your package manager's syntax.
 
@@ -18,7 +18,7 @@ sudo apt install python git -y
 git clone https://github.com/ataidefcjr/ytdlp-basicui
 cd ytdlp-basicui
 pip install -r requirements.txt
-python create.py
+python3 create.py
 ```
 #### `create.py` is used to create desktop shortchut.
 **`Note:`** If you do not want to create the desktop shortcut or if it does not work, you can add it manually or run `main.py` directly each time.

@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox, Text, Button, Label, Entry, filedialog
 import subprocess
 import threading
+import sys
 
 class YtDlpInterface:
     def __init__(self, master):
@@ -114,8 +115,16 @@ class YtDlpInterface:
         y = int((screen_height/2) - (window_height/2))
         wait_message.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
+        # Verificar se estamos no Windows
+        is_windows = sys.platform.startswith('win')
+
         # Construir o comando yt-dlp
-        command = ['pythonw', '-m', 'yt_dlp', *urls, '-o', f'{output_dir}/%(title)s.%(ext)s', '--windows-filenames']
+        command = ['-m', 'yt_dlp', *urls, '-o', f'{output_dir}/%(title)s.%(ext)s']
+        if is_windows:
+            command.insert(0, 'pythonw')
+            command.append('--windows-filenames')
+        else:
+            command.insert(0, 'python3')
         if args:
             command.extend(args.split())
 

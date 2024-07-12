@@ -2,7 +2,9 @@
 git clone https://github.com/ataidefcjr/ytdlp
 
 # Navegue até o diretório
-'''cd ytdlp'''
+'''
+cd ytdlp
+'''
 
 # Instale as biliotecas
 pip install -r requirements.txt

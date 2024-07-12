@@ -9,7 +9,7 @@ def create_desktop_shortcut():
     main_file = os.path.join(current_dir, 'main.py')
 
     # Criar atalho na área de trabalho
-    make_shortcut(main_file, name='ytdlp-ui', description='Executa uma interface básica para usar yt-dlp', icon='ytdlp.ico', terminal=False, executable='pythonw')
+    make_shortcut(main_file, name='ytdlp-ui', description='Executa uma interface básica para usar yt-dlp', icon='ytdlp.ico', terminal=False, executable='pythonw', working_dir=current_dir)
 
     print('''--------------------------------------------------------------------------------------
     \n ------------------------ ytdlp-ui shortchut added to desktop ------------------------

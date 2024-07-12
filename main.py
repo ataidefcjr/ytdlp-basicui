@@ -10,13 +10,14 @@ class YtDlpInterface:
         self.master.title("YTDLP Basic Interface")
 
         # Centralizar a janela principal
-        window_width = 550
+        window_width = 600
         window_height = 350
         screen_width = master.winfo_screenwidth()
         screen_height = master.winfo_screenheight()
         x = int((screen_width/2) - (window_width/2))
         y = int((screen_height/2) - (window_height/2))
         master.geometry(f"{window_width}x{window_height}+{x}+{y}")
+        master.resizable(False,False)
 
         # Carregar último diretório usado ou definir diretório inicial
         self.last_output_dir = self.load_last_directory()
@@ -25,31 +26,40 @@ class YtDlpInterface:
         # Label e Text para URL
         self.url_label = Label(master, text="URL(s):")
         self.url_label.grid(row=0, column=0, sticky=tk.E)
-
+        
         self.url_text = Text(master, height=10, width=50)
-        self.url_text.grid(row=0, column=1, columnspan=2, pady=10)
+        self.url_text.grid(row=0, column=1, columnspan=2, pady=10, padx=10, sticky="nsew")
 
         # Label e Entry para argumentos personalizados
         self.args_label = Label(master, text="Custom Arguments:")
-        self.args_label.grid(row=1, column=0, sticky=tk.E)
-        self.args_entry = Entry(master, width=50)
-        self.args_entry.grid(row=1, column=1, pady=10)
+        self.args_label.grid(row=1, column=0, sticky="e")
+        
+        self.args_entry = Entry(master, width=50, bd=3, relief=tk.GROOVE)
+        self.args_entry.grid(row=1, column=1, sticky="ew")
 
         # Botão de ajuda para argumentos
         self.help_button = Button(master, text="Help", command=self.show_help)
-        self.help_button.grid(row=1, column=2, padx=5, pady=10)
+        self.help_button.grid(row=1, column=2, padx=10, pady=10, sticky="ew")
 
         # Label e Entry para seleção de diretório de saída
         self.output_label = Label(master, text="Output Folder:")
-        self.output_label.grid(row=2, column=0, sticky=tk.E)
-        self.output_entry = Entry(master, textvariable=self.output_dir_var, width=40)
-        self.output_entry.grid(row=2, column=1, pady=10)
+        self.output_label.grid(row=2, column=0, sticky="e")
+        
+        self.output_entry = Entry(master, textvariable=self.output_dir_var, width=50, bd=3, relief=tk.GROOVE)
+        self.output_entry.grid(row=2, column=1, sticky="ew")
+        
         self.output_button = Button(master, text="Select Output Folder", command=self.choose_output_directory)
-        self.output_button.grid(row=2, column=2, pady=10)
+        self.output_button.grid(row=2, column=2, pady=10, padx=10, sticky="ew")
 
         # Botão para iniciar o download
         self.download_button = Button(master, text="Download", command=self.start_downloads)
-        self.download_button.grid(row=3, column=1, pady=20)
+        self.download_button.grid(row=3, column=0, columnspan=3, padx=80, pady=10, sticky="ew")
+
+        # Configuração de expansão das células para ocupar todo o espaço disponível
+        for i in range(4):
+            master.grid_rowconfigure(i, weight=1)
+        for j in range(3):
+            master.grid_columnconfigure(j, weight=1)
 
     def load_last_directory(self):
         try:

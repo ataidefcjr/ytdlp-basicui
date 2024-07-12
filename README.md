@@ -1,15 +1,15 @@
 # Para clonar o diretório
-$ git clone https://github.com/ataidefcjr/ytdlp
+git clone https://github.com/ataidefcjr/ytdlp
 
 # Navegue até o diretório
 cd ytdlp
 
 # Instale as biliotecas
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 
 # Cria um atalho na área de trabalho
-$ python create.py
+python create.py
 
-# Ou se não quiser criar o atalho
-# python main.py
+# Ou se não quiser criar o atalho, execute o script manualmente
+python main.py
 

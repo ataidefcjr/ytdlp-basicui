@@ -115,7 +115,7 @@ class YtDlpInterface:
         wait_message.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
         # Construir o comando yt-dlp
-        command = ['yt-dlp', *urls, '-o', f'{output_dir}/%(title)s.%(ext)s', '--windows-filenames']
+        command = ['pythonw', '-m', 'yt_dlp', *urls, '-o', f'{output_dir}/%(title)s.%(ext)s', '--windows-filenames']
         if args:
             command.extend(args.split())
 

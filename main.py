@@ -10,7 +10,7 @@ class YtDlpInterface:
         self.master.title("YTDLP Basic Interface")
 
         # Centralizar a janela principal
-        window_width = 600
+        window_width = 680
         window_height = 350
         screen_width = master.winfo_screenwidth()
         screen_height = master.winfo_screenheight()
@@ -35,24 +35,24 @@ class YtDlpInterface:
         self.args_label.grid(row=1, column=0, sticky="e")
         
         self.args_entry = Entry(master, width=50, bd=3, relief=tk.GROOVE)
-        self.args_entry.grid(row=1, column=1, sticky="ew")
+        self.args_entry.grid(row=1, column=1, padx=5, sticky="ew")
 
         # Botão de ajuda para argumentos
-        self.help_button = Button(master, text="Help", command=self.show_help)
+        self.help_button = Button(master, text="Help", height=3, width=25, command=self.show_help)
         self.help_button.grid(row=1, column=2, padx=10, pady=10, sticky="ew")
 
         # Label e Entry para seleção de diretório de saída
-        self.output_label = Label(master, text="Output Folder:")
+        self.output_label = Label(master, text="Output Folder:", width=30)
         self.output_label.grid(row=2, column=0, sticky="e")
         
         self.output_entry = Entry(master, textvariable=self.output_dir_var, width=50, bd=3, relief=tk.GROOVE)
-        self.output_entry.grid(row=2, column=1, sticky="ew")
+        self.output_entry.grid(row=2, column=1, padx=5, sticky="ew")
         
-        self.output_button = Button(master, text="Select Output Folder", command=self.choose_output_directory)
+        self.output_button = Button(master, text="Select Output Folder", width=25, height=3, command=self.choose_output_directory)
         self.output_button.grid(row=2, column=2, pady=10, padx=10, sticky="ew")
 
         # Botão para iniciar o download
-        self.download_button = Button(master, text="Download", command=self.start_downloads)
+        self.download_button = Button(master, text="Download", height=3, command=self.start_downloads)
         self.download_button.grid(row=3, column=0, columnspan=3, padx=80, pady=10, sticky="ew")
 
         # Configuração de expansão das células para ocupar todo o espaço disponível

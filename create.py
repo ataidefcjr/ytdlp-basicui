@@ -1,5 +1,6 @@
 import os
 from pyshortcuts import make_shortcut
+import sys
 
 def create_desktop_shortcut():
     # Diretório onde o script create_shortcut.py está localizado

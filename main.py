@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, Text, Button, Label, Entry, filedialog
+from tkinter import messagebox, Text, Button, Label, Entry, filedialog, Checkbutton
 import subprocess
 import threading
 import sys
@@ -30,30 +30,34 @@ class YtDlpInterface:
         self.url_text = Text(master, height=10, width=50)
         self.url_text.grid(row=0, column=1, columnspan=2, pady=10, padx=10, sticky="nsew")
 
+        # Botão para MP3
+        self.mp3_var = tk.BooleanVar()
+        self.mp3_button = Checkbutton(master, text="mp3", width=20, height=2, variable=self.mp3_var)
+        self.mp3_button.grid(row=1, column=1)
         # Label e Entry para argumentos personalizados
         self.args_label = Label(master, text="Custom Arguments:")
-        self.args_label.grid(row=1, column=0, sticky="e")
+        self.args_label.grid(row=2, column=0, sticky="e")
         
         self.args_entry = Entry(master, width=50, bd=3, relief=tk.GROOVE)
-        self.args_entry.grid(row=1, column=1, padx=5, sticky="ew")
+        self.args_entry.grid(row=2, column=1, padx=5, sticky="ew")
 
         # Botão de ajuda para argumentos
         self.help_button = Button(master, text="Help", height=3, width=25, command=self.show_help)
-        self.help_button.grid(row=1, column=2, padx=10, pady=10, sticky="ew")
+        self.help_button.grid(row=2, column=2, padx=10, pady=10, sticky="ew")
 
         # Label e Entry para seleção de diretório de saída
         self.output_label = Label(master, text="Output Folder:", width=30)
-        self.output_label.grid(row=2, column=0, sticky="e")
+        self.output_label.grid(row=3, column=0, sticky="e")
         
         self.output_entry = Entry(master, textvariable=self.output_dir_var, width=50, bd=3, relief=tk.GROOVE)
-        self.output_entry.grid(row=2, column=1, padx=5, sticky="ew")
+        self.output_entry.grid(row=3, column=1, padx=5, sticky="ew")
         
         self.output_button = Button(master, text="Select Output Folder", width=25, height=3, command=self.choose_output_directory)
-        self.output_button.grid(row=2, column=2, pady=10, padx=10, sticky="ew")
+        self.output_button.grid(row=3, column=2, pady=10, padx=10, sticky="ew")
 
         # Botão para iniciar o download
         self.download_button = Button(master, text="Download", height=3, command=self.start_downloads)
-        self.download_button.grid(row=3, column=0, columnspan=3, padx=80, pady=10, sticky="ew")
+        self.download_button.grid(row=4, column=0, columnspan=3, padx=80, pady=10, sticky="ew")
 
         # Configuração de expansão das células para ocupar todo o espaço disponível
         for i in range(4):
@@ -137,7 +141,10 @@ class YtDlpInterface:
             command.insert(0, 'python3')
         if args:
             command.extend(args.split())
-
+        if self.mp3_var.get():
+            commands = ['-x','--audio-format','mp3']
+            command.extend(commands)
+   
         # Iniciar download em uma thread separada
         threading.Thread(target=self.execute_download, args=(command, wait_message), daemon=True).start()
 
